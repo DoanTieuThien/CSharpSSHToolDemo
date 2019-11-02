@@ -1,0 +1,13 @@
+E:\CSharp\SSHTool\SSHTool\bin\Debug\SSHTool.exe
+E:\CSharp\SSHTool\SSHTool\bin\Debug\SSHTool.pdb
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.csprojAssemblyReference.cache
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.FormSSHMain.resources
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.Properties.Resources.resources
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.csproj.GenerateResource.cache
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.csproj.CoreCompileInputs.cache
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.exe
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.pdb
+E:\CSharp\SSHTool\SSHTool\bin\Debug\Renci.SshNet.dll
+E:\CSharp\SSHTool\SSHTool\bin\Debug\Renci.SshNet.xml
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.FormSshLogin.resources
+E:\CSharp\SSHTool\SSHTool\obj\Debug\SSHTool.csproj.CopyComplete
