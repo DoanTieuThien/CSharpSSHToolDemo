@@ -105,7 +105,7 @@ namespace SSHTool
         {
             if(this.reveiverDataAction != null)
             {
-                this.reveiverDataAction.DynamicInvoke(o,System.Text.Encoding.UTF8.GetString(e.Data));
+                this.reveiverDataAction.DynamicInvoke(o,System.Text.Encoding.ASCII.GetString(e.Data));
             }
         }
         //check ssh session is connected

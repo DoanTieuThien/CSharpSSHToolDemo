@@ -29,10 +29,6 @@ namespace SSHTool
                     this.sshShellControl.SendCommand(this.commandLine.ToString());
                     commandLine = new StringBuilder();
                 }
-                else
-                {
-                    this.commandLine.Append(e.KeyData);
-                }
             }
             catch (Exception exp)
             {
@@ -54,17 +50,48 @@ namespace SSHTool
         {
             try
             {
-                invokeAppendTextBox(this.txtSSHCommandLine, dataLine);
+                //[0m
+                while(dataLine.IndexOf("\u001b[0m\u001b[01;34m") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[0m\u001b[01;34m", "");
+                }
+                while (dataLine.IndexOf("\u001b[0m") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[0m", "");
+                }
+                while (dataLine.IndexOf("\u001b[01;34m") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[01;34m", "");
+                }
+                while (dataLine.IndexOf("\u001b[0m") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[0m", "");
+                }
+                while (dataLine.IndexOf("i\b\u001b[K??\b\u001b[K") >= 0)
+                {
+                    dataLine = dataLine.Replace("i\b\u001b[K??\b\u001b[K", "");
+                }
+                while (dataLine.IndexOf("\u001b[01;31m\u001b[K") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[01;31m\u001b[K", "");
+                }
+                while (dataLine.IndexOf("\u001b[m\u001b[K") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[m\u001b[K", "");
+                }
+                while (dataLine.IndexOf("\u001b[01;31m\u001b[K") >= 0)
+                {
+                    dataLine = dataLine.Replace("\u001b[01;31m\u001b[K", "");
+                }
+                if (!"".Equals(dataLine))
+                {
+                    invokeAppendTextBox(this.txtSSHCommandLine, dataLine);
+                }
             }
             catch (Exception exp)
             {
                 Console.WriteLine(exp.Message);
             }
-        }
-
-        private void txtSSHCommandLine_TextChanged(object sender, EventArgs e)
-        {
-           
         }
 
         private void loginSSh()
@@ -80,6 +107,7 @@ namespace SSHTool
             if (formSshLogin.dialogResult != DialogResult.OK)
             {
                 this.Close();
+                return;
             }
             this.sshShellControl = new SshShellControl();
             bool blResult = this.sshShellControl.OpenConnect(formSshLogin.txtHost.Text.Trim(),formSshLogin.txtUserName.Text.Trim()
@@ -100,6 +128,10 @@ namespace SSHTool
             }
             else
             {
+                if(t.Lines.Length > 400)
+                {
+                    t.Lines = t.Lines.Skip(30).ToArray() ;
+                }
                 t.AppendText(s);
             }
         }
@@ -126,6 +158,15 @@ namespace SSHTool
             {
                 Console.WriteLine(exp.Message);
             }
+        }
+
+        private void txtSSHCommandLine_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (this.txtSSHCommandLine.Lines.Length > 400)
+            {
+                this.txtSSHCommandLine.Lines = this.txtSSHCommandLine.Lines.Skip(30).ToArray();
+            }
+            this.commandLine.Append(e.KeyChar);
         }
     }
 }

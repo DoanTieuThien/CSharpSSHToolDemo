@@ -40,10 +40,11 @@
             this.txtSSHCommandLine.Location = new System.Drawing.Point(0, 0);
             this.txtSSHCommandLine.Multiline = true;
             this.txtSSHCommandLine.Name = "txtSSHCommandLine";
+            this.txtSSHCommandLine.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSSHCommandLine.Size = new System.Drawing.Size(876, 448);
             this.txtSSHCommandLine.TabIndex = 0;
-            this.txtSSHCommandLine.TextChanged += new System.EventHandler(this.txtSSHCommandLine_TextChanged);
             this.txtSSHCommandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSSHCommandLine_KeyDown);
+            this.txtSSHCommandLine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSSHCommandLine_KeyPress);
             // 
             // FormSSHMain
             // 
